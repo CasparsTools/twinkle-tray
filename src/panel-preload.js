@@ -2,7 +2,7 @@ const { ipcRenderer: ipc, remote } = require('electron');
 let browser = remote.getCurrentWindow()
 
 // Send logs to main thread
-//console.log = (...e) => { e.forEach((c) => ipc.send('log', c)) }
+console.log = (...e) => { e.forEach((c) => ipc.send('log', c)) }
 
 const log = console.log
 
@@ -335,7 +335,7 @@ ipc.on('mica-wallpaper', (event, wallpaper) => {
 // Request startup data
 browser.webContents.once('dom-ready', () => {
     requestSettings()
-    //requestMonitors()
+    requestMonitors()
     requestAccent()
 })
 
